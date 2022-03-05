@@ -6,7 +6,16 @@ function mouseMove(event){
     let positionY = `${event.clientY-zone.top}px`;
     selectZone.style.background = `radial-gradient(circle 3rem at ${positionX} ${positionY},rgba(0,0,0,0) 0%,rgba(0,0,0,0.95) 100% )`;
 }
+// 提示按鈕的部分
+const button = document.querySelector('.hint');
+button.addEventListener('click',function(){
+    document.querySelector('.table_hint').style.animation = `show 1s linear forwards`
+    setTimeout(() => {
+        document.querySelector('.table_hint').style.animation = `close 1s linear forwards`
+    }, 2000);
+});
 
+// 遊戲規則部分
 let tmp_arr = [];
 let fail_count = 0;
 let question = document.querySelectorAll('.q');
@@ -64,7 +73,7 @@ function dragDrop(e){
         e.target.append(wrong);
         setTimeout(()=>{
             e.target.innerHTML = '';
-        },2000)
+        },1000)
     }
     if(document.querySelectorAll('.q').length==4){
         setTimeout(function(){
